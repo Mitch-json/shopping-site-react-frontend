@@ -20,7 +20,7 @@ function AdminProducts(props) {
     }, [])
 
     const getProducts = () => {
-        fetch("/api/admin/products").then(res => {
+        fetch("https://api-for-mitch.herokuapp.com/api/admin/products").then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -34,7 +34,7 @@ function AdminProducts(props) {
     }
 
     const deleteProduct = (id)=>{
-        fetch(`/api/products/delete/${id}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/api/products/delete/${id}`).then(res => {
             if (res.ok) {
                 return res.json()
             }
@@ -73,7 +73,7 @@ function AdminProducts(props) {
     }
 
     const handleDetete = (fName, id) =>{
-        fetch(`/delete-image/${fName}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/delete-image/${fName}`).then(res => {
             if (res.ok) {
                 return res.json()
             }

@@ -14,7 +14,7 @@ function ProductScreen(props) {
     }, [])
 
     const getProduct = (id)=>{
-        fetch(`/api/product/${id}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/api/product/${id}`).then(res => {
             if(res.ok){
               return res.json()
             } 

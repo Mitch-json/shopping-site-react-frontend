@@ -20,7 +20,7 @@ function AdminEditCategory(props) {
     }, [])
 
     const getProduct = (id)=>{
-        fetch(`/api/category/${id}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/api/category/${id}`).then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -49,7 +49,7 @@ function AdminEditCategory(props) {
     }
 
     const postProduct = (id)=>{
-        fetch(`/api/categories/edit/${id}`, {
+        fetch(`https://api-for-mitch.herokuapp.com/api/categories/edit/${id}`, {
             method: 'POST',
             body: JSON.stringify({
                 title: title,

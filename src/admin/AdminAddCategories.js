@@ -28,7 +28,7 @@ function AdminAddCategories(props) {
     const handleFormSubmit = (e) =>{
         e.preventDefault()
         setDisabled(true)
-        fetch('/api/admin/categories', {
+        fetch('https://api-for-mitch.herokuapp.com/api/admin/categories', {
             method: 'POST',
             body: JSON.stringify({
                 title: title

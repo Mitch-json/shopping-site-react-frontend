@@ -31,7 +31,7 @@ function AdminAddProduct(props) {
     }, [])
 
     const getCategories = () => {
-        fetch("/api/admin/categories").then(res => {
+        fetch("https://api-for-mitch.herokuapp.com/api/admin/categories").then(res => {
           if(res.ok){
             return res.json()
           }
@@ -44,7 +44,7 @@ function AdminAddProduct(props) {
     }
 
     const postProduct = ()=>{
-        fetch('/api/admin/products', {
+        fetch('https://api-for-mitch.herokuapp.com/api/admin/products', {
             method: 'POST',
             body: JSON.stringify({
                 title: title,
@@ -115,7 +115,7 @@ function AdminAddProduct(props) {
         rating = x.toFixed(1)
         
         if(title && description && price && imageUrl){
-            axios.post('/upload-image',fd).then(res => {
+            axios.post('https://api-for-mitch.herokuapp.com/upload-image',fd).then(res => {
                 if(res.data.msg){
                     store.addNotification({
                         title: "Info",
@@ -190,7 +190,7 @@ function AdminAddProduct(props) {
     }
 
     const handleDetete = (fName) =>{
-        fetch(`/delete-image/${fName}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/delete-image/${fName}`).then(res => {
             if (res.ok) {
                 return res.json()
             }

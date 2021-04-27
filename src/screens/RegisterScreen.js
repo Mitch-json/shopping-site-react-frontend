@@ -27,7 +27,7 @@ function RegisterScreen(props) {
   }, [props.history, redirect, userInfo]);
 
   const sendMail = (code, name, email, password)=>{
-    fetch(`/api/email`, {
+    fetch(`https://api-for-mitch.herokuapp.com/api/email`, {
         method: 'POST',
         body: JSON.stringify({
             email: email,

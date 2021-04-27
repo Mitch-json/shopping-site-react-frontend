@@ -13,7 +13,7 @@ function CategoryScreen(props) {
     }, [window.location.href])
 
     const getCategoryProducts = (category) => {
-        fetch(`/api/categories/${category}`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/api/categories/${category}`).then(res => {
             if(res.ok){
                 return res.json()
             }

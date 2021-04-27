@@ -4,7 +4,7 @@ import { CART_ADD_ITEM, CART_EMPTY, CART_REMOVE_ITEM } from "../constants/cartCo
 
 const addToCart = (productId, qty) => async (dispatch, getState) => {
     try {
-        const {data} = await Axios.get('/api/product/'+productId);
+        const {data} = await Axios.get('https://api-for-mitch.herokuapp.com/api/product/'+productId);
 
         dispatch({type: CART_ADD_ITEM, payload:{
             product: data.product[0]._id,

@@ -20,7 +20,7 @@ function AdminOffers(props) {
     }, [])
 
     const getProducts = () => {
-        fetch("/api/admin/products").then(res => {
+        fetch("https://api-for-mitch.herokuapp.com/api/admin/products").then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -34,7 +34,7 @@ function AdminOffers(props) {
     }
 
     const editOffer = (id, value)=>{
-        fetch(`/api/admin/product/${id}/offer/add`, {
+        fetch(`https://api-for-mitch.herokuapp.com/api/admin/product/${id}/offer/add`, {
             method: 'POST',
             body: JSON.stringify({
                 offer: value
@@ -78,7 +78,7 @@ function AdminOffers(props) {
     }
 
     const removeOffer = (id)=>{
-        fetch(`/api/admin/product/${id}/offer/remove`).then(res => {
+        fetch(`https://api-for-mitch.herokuapp.com/api/admin/product/${id}/offer/remove`).then(res => {
             if(res.ok){
                 return res.json()
             }

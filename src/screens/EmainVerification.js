@@ -9,7 +9,7 @@ function EmailVerification(props) {
     const [disabled, setDisabled] = useState(false)
 
     const registerUser = (Name, email, password)=>{
-        fetch('/api/users/register', {
+        fetch('https://api-for-mitch.herokuapp.com/api/users/register', {
             method: 'POST',
             body: JSON.stringify({
                 name: Name,

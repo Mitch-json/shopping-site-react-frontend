@@ -18,7 +18,7 @@ export default function OrderHistoryScreen(props) {
   }, []);
 
   const getUserOrders = (id) =>{
-    fetch(`/api/orders/${id}`).then(res => {
+    fetch(`https://api-for-mitch.herokuapp.com/api/orders/${id}`).then(res => {
       if (res.ok) {
         return res.json()
       }
