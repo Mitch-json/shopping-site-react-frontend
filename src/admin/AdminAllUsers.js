@@ -29,8 +29,8 @@ function AdminAllUsers(props) {
             }else if(data.err){
                 console.log(data.err)
             }
+            setLoad(false)
         })
-        setLoad(false)
     }
 
     const changeAdmin = (prev, id) =>{

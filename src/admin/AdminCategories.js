@@ -30,9 +30,9 @@ function AdminCategories(props) {
         if (data.categories) {
           setCategories(data.categories)
         }
+        setLoading(false)
       })
   
-      setLoading(false)
     }
     const handleDetete = (id) =>{
         fetch(`/api/categories/delete/${id}`).then(res => {

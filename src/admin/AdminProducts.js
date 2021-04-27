@@ -28,9 +28,9 @@ function AdminProducts(props) {
               if (data.products) {
                   setProducts(data.products)
               }
+              setLoad(false)
           })
           
-          setLoad(false)
     }
 
     const deleteProduct = (id)=>{

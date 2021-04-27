@@ -28,9 +28,9 @@ function AdminOffers(props) {
               if (data.products) {
                   setProducts(data.products)
               }
+              setLoad(false)
           })
           
-          setLoad(false)
     }
 
     const editOffer = (id, value)=>{
