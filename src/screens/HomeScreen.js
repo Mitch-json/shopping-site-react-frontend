@@ -15,7 +15,7 @@ function HomeScreen() {
     }, [])
 
     const getProducts = () => {
-        fetch("api/admin/products").then(res => {
+        fetch("https://api-for-mitch.herokuapp.com/api/admin/products").then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -29,7 +29,7 @@ function HomeScreen() {
           
     }
     const getOfferProducts = () => {
-        fetch("api/products/offer").then(res => {
+        fetch("https://api-for-mitch.herokuapp.com/api/products/offer").then(res => {
             if(res.ok){
               return res.json()
             } 
