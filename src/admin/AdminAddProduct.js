@@ -43,7 +43,7 @@ function AdminAddProduct(props) {
         })
     }
 
-    const postProduct = ()=>{
+    const postProduct = (url)=>{
         fetch('https://api-for-mitch.herokuapp.com/api/admin/products', {
             method: 'POST',
             body: JSON.stringify({
@@ -51,7 +51,7 @@ function AdminAddProduct(props) {
                 description: description,
                 price: price,
                 category: category,
-                image: imageUrl,
+                image: url,
                 rating: rating,
                 reviews: reviews
             }),
@@ -84,7 +84,6 @@ function AdminAddProduct(props) {
                 reviews = undefined                
             }
             else if(data.err){
-                handleDetete(imageUrl)
                 setDisabled(false)
                 store.addNotification({
                     title: "Warning",
@@ -109,17 +108,19 @@ function AdminAddProduct(props) {
         setDisabled(true)
         const fd = new FormData()
         fd.append('file', image)
+        fd.append("upload_preset", "gthgnzsg")
 
         const x = Math.random() * (5.0-2.3) + 2.3
         reviews = Math.floor((Math.random() * 200))
         rating = x.toFixed(1)
-        
-        if(title && description && price && imageUrl){
-            axios.post('https://api-for-mitch.herokuapp.com/upload-image',fd).then(res => {
-                if(res.data.msg){
+
+       if(title && description && price){
+            axios.post('https://api.cloudinary.com/v1_1/dgevpdvgi/image/upload',fd).then(res => {
+                if (res.status == 200) {
+                    const Url = res.data.url 
                     store.addNotification({
-                        title: "Info",
-                        message: res.data.msg,
+                        title: "Message",
+                        message: "Image saved",
                         type: 'info',
                         insert: "top",
                         container: "top-right",
@@ -130,12 +131,12 @@ function AdminAddProduct(props) {
                           onScreen: true
                         }
                     })
-                    postProduct()
-                }else if(res.data.err){
+                    postProduct(Url)
+                } else {
                     store.addNotification({
-                        title: "Error",
-                        message: res.data.err,
-                        type: 'danger',
+                        title: "Alert",
+                        message: "Image not saved, Try Again!",
+                        type: 'warning',
                         insert: "top",
                         container: "top-right",
                         animationIn: ["animate__animated", "animate__fadeIn"],

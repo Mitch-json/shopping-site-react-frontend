@@ -109,7 +109,7 @@ function EmailVerification(props) {
                     </div>
                     
                     <div>
-                        <button type="submit" disabled={disabled} className="button primary">Signin</button>
+                        <button type="submit" disabled={disabled} className="button primary">Verify</button>
                     </div>
             </form>
         </div>

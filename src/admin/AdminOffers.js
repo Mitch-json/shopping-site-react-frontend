@@ -140,7 +140,7 @@ function AdminOffers(props) {
                             <td>Ksh {product.price} </td>
                             <td>{product.origPrice} </td>
                             <td>
-                                <img id="noimage" src={`/static/images/product_images/${product.image}`} alt="product"></img>
+                                <img id="noimage" src={product.image} alt="product"></img>
                             </td>
                             <td>
                                 <select value={product.offer} onChange={(e) => editOffer(product._id, e.target.value)}>

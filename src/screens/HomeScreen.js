@@ -51,7 +51,7 @@ function HomeScreen() {
                 {offers.map((product) => (
                     <div className="carousel-div" style={{"height": 350}} key={product._id}>
                         <Link to={`product/${product._id}`}>
-                            <img style={{"maxHeight": 320, "objectFit": "contain"}} src={`/static/images/product_images/${product.image}`} alt={product.title} />
+                            <img style={{"maxHeight": 320, "objectFit": "contain"}} src={product.image} alt={product.title} />
                             <p className="legend">{product.title}</p>
                         </Link>
                     </div>
@@ -64,7 +64,7 @@ function HomeScreen() {
                 products.map(product => 
                     <div key={product._id} className="card">
                         <Link to={`product/${product._id}`}>
-                            <img className="medium" src={`/static/images/product_images/${product.image}`} alt="product"></img>
+                            <img className="medium" src={product.image} alt="product"></img>
                         </Link>
                         <div className="card-body">
                             <Link to={`product/${product._id}`}>

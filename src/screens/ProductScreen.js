@@ -43,7 +43,7 @@ function ProductScreen(props) {
                             <div className="col-2">
                                 <img
                                     className="large"
-                                    src={`/static/images/product_images/${product.image}`}
+                                    src={product.image}
                                     alt={product.title}
                                 ></img>
                             </div>

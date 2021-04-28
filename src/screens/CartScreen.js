@@ -45,7 +45,7 @@ function CartScreen(props) {
                     <div className="row">
                     <div>
                         <img
-                            src={`/static/images/product_images/${item.image}`}
+                            src={item.image}
                             alt={item.name}
                             className="small"
                         ></img>

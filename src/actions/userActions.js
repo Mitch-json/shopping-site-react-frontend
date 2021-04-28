@@ -26,46 +26,57 @@ const update = ({ userId, name, email, password }) => async (dispatch, getState)
 
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
-  try {
-    const { data } = await Axios.post("https://api-for-mitch.herokuapp.com/api/users/signin", { email, password, });
-    if(data.err){
-      dispatch({ type: USER_SIGNIN_FAIL, payload: data.err });
-      store.addNotification({
-        title: "Warning",
-        message: data.err,
-        type: 'warning',
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
-        }
-      })
-    }else if (data.sus) {
-      dispatch({ type: USER_SIGNIN_FAIL, payload: data.sus });
-      store.addNotification({
-        title: "Error",
-        message: data.sus,
-        type: 'danger',
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
-        }
-      })
-    }
-    else{
-      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
-      Cookie.set('userInfo', JSON.stringify(data));
-    }
-  } catch (error) {
-    dispatch({ type: USER_SIGNIN_FAIL, payload: "Something Went Wrong" });
-  }
+    fetch("https://api-for-mitch.herokuapp.com/api/users/signin", {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password
+            }),
+            headers: {
+                "Access-Control-Allow-Origin" : "*",
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(res => {
+            if(res.ok){
+                return res.json()
+            }
+        }).then(data => {
+            if(data.err){
+              dispatch({ type: USER_SIGNIN_FAIL, payload: data.err });
+              store.addNotification({
+                title: "Warning",
+                message: data.err,
+                type: 'warning',
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              })
+            }else if (data.sus) {
+              dispatch({ type: USER_SIGNIN_FAIL, payload: data.sus });
+              store.addNotification({
+                title: "Error",
+                message: data.sus,
+                type: 'danger',
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              })
+            }
+            else{
+              dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+              Cookie.set('userInfo', JSON.stringify(data));
+            }
+        })
 }
 
 const register = (name, email, password) => async (dispatch) => {
