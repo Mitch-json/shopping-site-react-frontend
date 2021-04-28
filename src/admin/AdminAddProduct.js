@@ -162,6 +162,7 @@ function AdminAddProduct(props) {
                   onScreen: true
                 }
             })
+            setDisabled(false)
         }
     }
     const handleFileChange = (e) => {

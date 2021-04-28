@@ -77,7 +77,7 @@ function HomeScreen() {
                             <div className="row">
                                 {product.origPrice===product.price ? <div className="price">ksh {product.price}</div> : <div className="price">ksh <p className="product-price-crossed"> {product.origPrice} </p> <p className="product-price-red"> <p className="p-p-r-p1">{product.price}</p> <p className="p-p-r-p2">{"("}{100-Math.ceil((product.price/product.origPrice)*100)}% off{")"}</p></p></div>}
                                 <div>
-                                    <Link to={`/`}>
+                                    <Link to={`products/category/${product.category}`}>
                                         {product.category}
                                     </Link>
                                 </div>

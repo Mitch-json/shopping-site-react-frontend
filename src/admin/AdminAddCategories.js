@@ -27,50 +27,66 @@ function AdminAddCategories(props) {
     
     const handleFormSubmit = (e) =>{
         e.preventDefault()
-        setDisabled(true)
-        fetch('https://api-for-mitch.herokuapp.com/api/admin/categories', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: title
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(res => res.json()).then(msg => {
-            setTitle("")
-            if(msg.msg){
-                store.addNotification({
-                    title: "Message",
-                    message: msg.msg,
-                    type: 'success',
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                      duration: 5000,
-                      onScreen: true
-                    }
-                })
-                setDisabled(false)
-                props.history.push('/adminArea/categories')
-            }else if (msg.err) {
-                store.addNotification({
-                    title: "Warning",
-                    message: msg.err,
-                    type: 'warning',
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                      duration: 5000,
-                      onScreen: true
-                    }
-                })
-                setDisabled(false)
-            }
-        })
+        if(title){
+            setDisabled(true)
+            fetch('https://api-for-mitch.herokuapp.com/api/admin/categories', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: title
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => res.json()).then(msg => {
+                setTitle("")
+                if(msg.msg){
+                    store.addNotification({
+                        title: "Message",
+                        message: msg.msg,
+                        type: 'success',
+                        insert: "top",
+                        container: "top-right",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                    })
+                    setDisabled(false)
+                    props.history.push('/adminArea/categories')
+                }else if (msg.err) {
+                    store.addNotification({
+                        title: "Warning",
+                        message: msg.err,
+                        type: 'warning',
+                        insert: "top",
+                        container: "top-right",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                    })
+                    setDisabled(false)
+                }
+            })
+        }else{
+            store.addNotification({
+                title: "Error",
+                message: "Please fill all the fields",
+                type: 'danger',
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            })
+        }
     }
     return (
         <div className="container" style={{"margin-top": "20px"}}>
