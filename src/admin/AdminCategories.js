@@ -22,7 +22,7 @@ function AdminCategories(props) {
     }, [])
   
     const getCategories = () => {
-      fetch("https://api-for-mitch.herokuapp.com/api/admin/categories").then(res => {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/categories`).then(res => {
         if(res.ok){
           return res.json()
         }
@@ -35,7 +35,7 @@ function AdminCategories(props) {
   
     }
     const handleDetete = (id) =>{
-        fetch(`https://api-for-mitch.herokuapp.com/api/categories/delete/${id}`).then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/categories/delete/${id}`).then(res => {
           if (res.ok) {
               return res.json()
           }

@@ -29,7 +29,7 @@ function AdminAddCategories(props) {
         e.preventDefault()
         if(title){
             setDisabled(true)
-            fetch('https://api-for-mitch.herokuapp.com/api/admin/categories', {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/categories`, {
                 method: 'POST',
                 body: JSON.stringify({
                     title: title

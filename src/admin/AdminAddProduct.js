@@ -31,7 +31,7 @@ function AdminAddProduct(props) {
     }, [])
 
     const getCategories = () => {
-        fetch("https://api-for-mitch.herokuapp.com/api/admin/categories").then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/categories`).then(res => {
           if(res.ok){
             return res.json()
           }
@@ -44,7 +44,7 @@ function AdminAddProduct(props) {
     }
 
     const postProduct = (url)=>{
-        fetch('https://api-for-mitch.herokuapp.com/api/admin/products', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/products`, {
             method: 'POST',
             body: JSON.stringify({
                 title: title,
@@ -192,7 +192,7 @@ function AdminAddProduct(props) {
     }
 
     const handleDetete = (fName) =>{
-        fetch(`https://api-for-mitch.herokuapp.com/delete-image/${fName}`).then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/delete-image/${fName}`).then(res => {
             if (res.ok) {
                 return res.json()
             }

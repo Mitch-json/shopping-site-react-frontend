@@ -26,7 +26,7 @@ const update = ({ userId, name, email, password }) => async (dispatch, getState)
 
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
-    fetch("https://api-for-mitch.herokuapp.com/api/users/signin", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/signin`, {
             method: 'POST',
             body: JSON.stringify({
                 email: email,

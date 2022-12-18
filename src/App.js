@@ -46,7 +46,7 @@ function App() {
   }, [cartItems, userInfo, dispatch])
 
   const getCategories = () => {
-    fetch("https://api-for-mitch.herokuapp.com/api/admin/categories").then(res => {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/categories`).then(res => {
       if(res.ok){
         return res.json()
       }

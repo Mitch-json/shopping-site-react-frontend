@@ -19,7 +19,7 @@ function AdminAllUsers(props) {
 
 
     const getAllusers = ()=>{
-        fetch('https://api-for-mitch.herokuapp.com/api/admin/users').then(res=>{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/users`).then(res=>{
             if (res.ok) {
                 return res.json()
             }
@@ -35,13 +35,13 @@ function AdminAllUsers(props) {
 
     const changeAdmin = (prev, id) =>{
         if(prev == 1){
-            fetch(`https://api-for-mitch.herokuapp.com/api/admin/user/isAdmin/${id}/0`).then(res => {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/isAdmin/${id}/0`).then(res => {
                 if (res.ok) {
                     return res.json()
                 }
             }).then(data=> getAllusers())
         }else if(prev == 0){
-            fetch(`https://api-for-mitch.herokuapp.com/api/admin/user/isAdmin/${id}/1`).then(res => {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/isAdmin/${id}/1`).then(res => {
                 if (res.ok) {
                     return res.json()
                 }
@@ -51,13 +51,13 @@ function AdminAllUsers(props) {
 
     const changeSuspended = (prev, id) =>{
         if(prev == 1){
-            fetch(`https://api-for-mitch.herokuapp.com/api/admin/user/suspended/${id}/0`).then(res => {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/suspended/${id}/0`).then(res => {
                 if (res.ok) {
                     return res.json()
                 }
             }).then(data=> getAllusers())
         }else if(prev == 0){
-            fetch(`https://api-for-mitch.herokuapp.com/api/admin/user/suspended/${id}/1`).then(res => {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/suspended/${id}/1`).then(res => {
                 if (res.ok) {
                     return res.json()
                 }

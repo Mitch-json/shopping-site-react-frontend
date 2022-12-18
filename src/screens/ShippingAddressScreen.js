@@ -26,7 +26,7 @@ export default function ShippingAddressScreen(props) {
   }, [cartItems])
 
   const getUserAddress = (id) => {
-    fetch(`https://api-for-mitch.herokuapp.com/api/shipping/address/${id}`).then(res => {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/shipping/address/${id}`).then(res => {
       if(res.ok){
         return res.json()
       }
@@ -39,7 +39,7 @@ export default function ShippingAddressScreen(props) {
   }
   
   const setShippingAddress = () => {
-    fetch(`https://api-for-mitch.herokuapp.com/api/shipping/address/${userInfo._id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/shipping/address/${userInfo._id}`, {
       method: "POST",
       body: JSON.stringify({
         fullName: fullName,
@@ -72,7 +72,7 @@ export default function ShippingAddressScreen(props) {
       prod.countInStock = item.countInStock
       products.push(prod)
     })
-      fetch(`https://api-for-mitch.herokuapp.com/api/orders/${id}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/orders/${id}`, {
         method: "POST",
         body: JSON.stringify({
           products: products

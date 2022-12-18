@@ -26,7 +26,7 @@ function AdminEditProduct(props) {
     }, [])
 
     const getProduct = (id)=>{
-        fetch(`https://api-for-mitch.herokuapp.com/api/product/${id}`).then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/product/${id}`).then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -47,7 +47,7 @@ function AdminEditProduct(props) {
     }
 
     const getCategories = () => {
-        fetch("https://api-for-mitch.herokuapp.com/api/admin/categories").then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/categories`).then(res => {
           if(res.ok){
             return res.json()
           }
@@ -58,7 +58,7 @@ function AdminEditProduct(props) {
         })
     }
     const postProduct = (id)=>{
-        fetch(`https://api-for-mitch.herokuapp.com/api/products/edit/${id}`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/products/edit/${id}`, {
             method: 'POST',
             body: JSON.stringify({
                 title: title,

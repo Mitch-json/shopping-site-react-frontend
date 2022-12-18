@@ -21,7 +21,7 @@ function AdminProducts(props) {
     }, [])
 
     const getProducts = () => {
-        fetch("https://api-for-mitch.herokuapp.com/api/admin/products").then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/admin/products`).then(res => {
             if(res.ok){
               return res.json()
             } 
@@ -35,7 +35,7 @@ function AdminProducts(props) {
     }
 
     const deleteProduct = (id)=>{
-        fetch(`https://api-for-mitch.herokuapp.com/api/products/delete/${id}`).then(res => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/products/delete/${id}`).then(res => {
             if (res.ok) {
                 return res.json()
             }
