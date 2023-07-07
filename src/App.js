@@ -55,8 +55,6 @@ function App() {
         setCategories(data.categories)
       }
     })
-
-    
   }
 
   const openMenu = ()=>{
